@@ -10,8 +10,8 @@
 <title>Presidents</title>
 </head>
 <body>
-	<c:forEach var="president" items="${presidents}">
-				<c:out value="${president.name}"></c:out>
+<%-- 	<c:forEach var="president" items="${presidents}" varStatus="status">
+ --%>				<c:out value="${president.name}"></c:out>
 				<br>
 				<c:out value="${president.termNumber}"></c:out>
 				<br>
@@ -25,9 +25,11 @@
 				<br>
 				<div id="presPic"><img src="${president.image}"/></div>
 				<br>
-			</c:forEach>
-			
-<input type="button" value="next">
-<input type="button" value="previous">
+<%-- 			</c:forEach>
+ --%>			
+<!-- <input type="button" name="submit" value="next">
+<input type="button" name="submit" value="previous"> -->
+   <button class="button" name="submit" value="prev">Prev</button>
+            <button class="button" name="submit" value="next">Next</button>
 </body>
 </html>

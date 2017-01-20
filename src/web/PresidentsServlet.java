@@ -41,7 +41,10 @@ public class PresidentsServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		req.setAttribute("presidents", presidentDAO.getPresidents());
+		String nextBack = req.getParameter("submit");
+		System.out.println(nextBack);
+		int x = 1;
+		req.setAttribute("president", presidentDAO.getPresidents().get(x));
 		req.getRequestDispatcher("/president.jsp").forward(req, resp);
 	}
 	
