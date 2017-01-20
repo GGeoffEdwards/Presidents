@@ -15,7 +15,7 @@ public class PresidentDAOFileImpl implements PresidentDAO{
 	
 	public PresidentDAOFileImpl(ServletContext context){
 		this.context = context;
-		this.loadInventoryFromFile("presidents.txt");
+		this.loadInventoryFromFile("WEB-INF/presidents1.txt");
 	}
 
 	private void loadInventoryFromFile(String fileName){

@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+
+#photo{
+	width: 200px;
+	height: 250px;
+	margin: auto;
+	border: 2px solid black;
+}
