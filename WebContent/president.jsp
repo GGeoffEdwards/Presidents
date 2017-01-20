@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="mystyles.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Presidents</title>
 </head>
@@ -23,7 +23,7 @@
 				<br>
 				<c:out value="${president.image}"></c:out>
 				<br>
-				<div class="presPic"></div><img src="${president.image}"/></div>
+				<div id="presPic"><img src="${president.image}"/></div>
 				<br>
 			</c:forEach>
 			
