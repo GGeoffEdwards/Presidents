@@ -21,15 +21,21 @@
 				<br>
 				<c:out value="${president.funFact}"></c:out>
 				<br>
-				<c:out value="${president.image}"></c:out>
-				<br>
 				<div id="presPic"><img src="${president.image}"/></div>
 				<br>
 <%-- 			</c:forEach>
  --%>			
+	<form action="president.do">
+<!-- 		<input type ="submit" name="submit" value="next"/> -->
+
+ <button class="button" name="submit" value="${prevNumber}">Previous</button>
+ <button class="button" name="submit" value="${nextNumber}">Next</button>
+	</form> 	
+	<form>Go to term number:<input type="text" name="termNumber" > 
+<input type="submit" value="Search">
+</form>
 <!-- <input type="button" name="submit" value="next">
 <input type="button" name="submit" value="previous"> -->
-   <button class="button" name="submit" value="prev">Prev</button>
-            <button class="button" name="submit" value="next">Next</button>
+
 </body>
 </html>

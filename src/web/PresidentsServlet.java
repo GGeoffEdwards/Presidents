@@ -42,9 +42,28 @@ public class PresidentsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		String nextBack = req.getParameter("submit");
+		String goToTerm = req.getParameter("termNumber");
 		System.out.println(nextBack);
-		int x = 1;
-		req.setAttribute("president", presidentDAO.getPresidents().get(x));
+		
+		if(goToTerm != null){
+			int g = Integer.parseInt(goToTerm);
+			System.out.println("goToTerm" +g);
+			req.setAttribute("president", presidentDAO.getPresidents().get(g-1));
+		}
+		
+		else if(nextBack == null){	
+			req.setAttribute("president", presidentDAO.getPresidents().get(0));
+			req.setAttribute("nextNumber", Integer.parseInt(presidentDAO.getPresidents().get(0).getTermNumber()));
+		}
+		else{
+			int x = Integer.parseInt(nextBack);
+			
+//			System.out.println("test" + (Integer.parseInt(presidentDAO.getPresidents().get(x).getTermNumber()) -2));
+			req.setAttribute("president", presidentDAO.getPresidents().get(x));
+			req.setAttribute("nextNumber", Integer.parseInt(presidentDAO.getPresidents().get(x).getTermNumber()));
+			req.setAttribute("prevNumber", Integer.parseInt(presidentDAO.getPresidents().get(x).getTermNumber())-2);
+		}
+		
 		req.getRequestDispatcher("/president.jsp").forward(req, resp);
 	}
 	
