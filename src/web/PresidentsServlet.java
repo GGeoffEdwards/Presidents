@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import data.President;
 import data.PresidentDAO;
 import data.PresidentDAOFileImpl;
@@ -18,6 +17,8 @@ import data.PresidentDAOFileImpl;
 public class PresidentsServlet extends HttpServlet {
 
 	PresidentDAO presidentDAO;
+	List<President> presidents;
+	List<President> filterPresidents;
 
 	@Override
 	public void init() throws ServletException {
@@ -28,9 +29,9 @@ public class PresidentsServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-//		Item item = storeDAO.getInventoryItem(req.getParameter("product"));
+		// Item item = storeDAO.getInventoryItem(req.getParameter("product"));
 		HttpSession session = req.getSession();
-		List<President> presidents = (List<President>) session.getAttribute("presidents");
+		presidents = (List<President>) session.getAttribute("presidents");
 		if (presidents == null) {
 			presidents = new ArrayList<President>();
 			session.setAttribute("presidents", presidents);
@@ -39,32 +40,50 @@ public class PresidentsServlet extends HttpServlet {
 		req.getRequestDispatcher("/president.jsp").forward(req, resp);
 	}
 
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nextBack = req.getParameter("submit");
 		String goToTerm = req.getParameter("termNumber");
-		System.out.println(nextBack);
-		
-		if(goToTerm != null){
-			int g = Integer.parseInt(goToTerm);
-			System.out.println("goToTerm" +g);
-			req.setAttribute("president", presidentDAO.getPresidents().get(g-1));
+		//System.out.println(nextBack);
+		String filter = req.getParameter("filter");
+		System.out.println("filter =" + filter);
+
+		if (filter != null) {
+			filter = " " + filter;
+			filterPresidents = new ArrayList<>();
+			for (President p : presidentDAO.getPresidents()) {
+				if (p.getParty().equals(filter)) {
+					filterPresidents.add(p);
+				}
+			}
+			System.out.println(filterPresidents.size());
+			req.setAttribute("filterPresident", filterPresidents);
+			req.getRequestDispatcher("/filter.jsp").forward(req, resp);
 		}
-		
-		else if(nextBack == null){	
+
+		else if (goToTerm != null) {
+			int g = Integer.parseInt(goToTerm);
+			//System.out.println("goToTerm" + g);
+			req.setAttribute("president", presidentDAO.getPresidents().get(g - 1));
+			req.setAttribute("nextNumber", Integer.parseInt(presidentDAO.getPresidents().get(g - 1).getTermNumber()));
+			req.setAttribute("prevNumber",
+					Integer.parseInt(presidentDAO.getPresidents().get(g - 1).getTermNumber()) - 2);
+		}
+
+		else if (nextBack == null) {
 			req.setAttribute("president", presidentDAO.getPresidents().get(0));
 			req.setAttribute("nextNumber", Integer.parseInt(presidentDAO.getPresidents().get(0).getTermNumber()));
-		}
-		else{
+		} else {
 			int x = Integer.parseInt(nextBack);
-			
-//			System.out.println("test" + (Integer.parseInt(presidentDAO.getPresidents().get(x).getTermNumber()) -2));
+
+			// System.out.println("test" +
+			// (Integer.parseInt(presidentDAO.getPresidents().get(x).getTermNumber())
+			// -2));
 			req.setAttribute("president", presidentDAO.getPresidents().get(x));
 			req.setAttribute("nextNumber", Integer.parseInt(presidentDAO.getPresidents().get(x).getTermNumber()));
-			req.setAttribute("prevNumber", Integer.parseInt(presidentDAO.getPresidents().get(x).getTermNumber())-2);
+			req.setAttribute("prevNumber", Integer.parseInt(presidentDAO.getPresidents().get(x).getTermNumber()) - 2);
 		}
-		
 		req.getRequestDispatcher("/president.jsp").forward(req, resp);
+
 	}
-	
+
 }

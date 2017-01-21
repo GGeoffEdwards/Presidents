@@ -1,7 +1,88 @@
 @CHARSET "UTF-8";
 
+body{
+	/*  background: linear-gradient(to top, blue , white, red ) fixed;*/
+	background-image: url("https://images3.alphacoders.com/197/197649.jpg");
+	
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+#contain { 
+	width: auto;
+	text-align: right;
+	position: fixed;
+	top: 8px;
+	right: 16px;
+	
+}
+
+#presNum{
+	 
+	float: left;
+	color: white;
+	font-size: 45px;
+	font-family: 'Cinzel';
+	padding-right: 0.5em;
+}
+#presName{
+	float: left;
+	color: white;
+	font-size: 45px;
+	padding-left: 0%;
+	font-family: 'Cinzel';
+}
+.clear {clear:both;}
+
+#contain2{
+	padding-top: 8%;
+	padding-left: 5%;
+	float: left;
+	width: 35%;
+	font-size: 18px;
+	font-family: 'Cinzel';
+	
+}
+
+.word{
+	text-decoration: underline;
+	font-weight: bolder;
+}
+
+#term{
+	font-family: 'Cinzel';
+	position: fixed;
+	top: 8px;
+	left: 5px;
+}
+
+#shift{
+	position: fixed;
+	bottom: 25%;
+	right: 9.5%;
+}
+
+
+
+
+#presPic{
+	padding-top: 10%;
+	padding-right: 3%;
+}
+
+.button{
+	background-color: black;
+}
+.fa{
+	color: red;
+}
+
 img {
-	width: 20px;
-	height: 20px;
-	border: 2px solid black;
+	width: 250px;
+	height: 300px;
+	position: relative;
+	float: right;
+	border: 10px solid black;
+	border-radius: 50%;
 }

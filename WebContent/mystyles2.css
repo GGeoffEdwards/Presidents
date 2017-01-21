@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+
+body{
+	/*  background: linear-gradient(to top, blue , white, red ) fixed;*/
+	background-image: url("https://images3.alphacoders.com/197/197649.jpg");
+	
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+img {
+	width: 250px;
+	height: 300px;
+	position: relative;
+	border: 10px solid black;
+	border-radius: 50%;
+}
+
+ul{
+	list-style: none;
+	display: inline;
+	float: left;
+	font-family: 'Cinzel';
+	font-weight: bolder;
+}
+
+a{
+	float: left;
+	font-family: 'Cinzel';
+}
+
+#picName {
+	text-align: center;
+}
