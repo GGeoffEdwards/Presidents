@@ -56,11 +56,13 @@ public class PresidentsServlet extends HttpServlet {
 		}
 
 		else if (goToTerm != null) {
-			int g = Integer.parseInt(goToTerm);
-			req.setAttribute("president", presidentDAO.getPresidents().get(g - 1));
-			req.setAttribute("nextNumber", Integer.parseInt(presidentDAO.getPresidents().get(g - 1).getTermNumber()));
-			req.setAttribute("prevNumber",
-					Integer.parseInt(presidentDAO.getPresidents().get(g - 1).getTermNumber()) - 2);
+			int goToTermInt = Integer.parseInt(goToTerm);
+			if (goToTermInt > 45 || goToTermInt < 1){
+				req.getRequestDispatcher("/error.jsp").forward(req, resp);
+			}
+			req.setAttribute("president", presidentDAO.getPresidents().get(goToTermInt - 1));
+			req.setAttribute("nextNumber", Integer.parseInt(presidentDAO.getPresidents().get(goToTermInt - 1).getTermNumber()));
+			req.setAttribute("prevNumber",Integer.parseInt(presidentDAO.getPresidents().get(goToTermInt - 1).getTermNumber()) - 2);
 		}
 
 		else if (nextBack == null) {
@@ -73,6 +75,5 @@ public class PresidentsServlet extends HttpServlet {
 			req.setAttribute("prevNumber", Integer.parseInt(presidentDAO.getPresidents().get(x).getTermNumber()) - 2);
 		}
 		req.getRequestDispatcher("/president.jsp").forward(req, resp);
-
 	}
 }

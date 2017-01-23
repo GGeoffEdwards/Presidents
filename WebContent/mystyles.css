@@ -1,10 +1,28 @@
 @CHARSET "UTF-8";
 
+
 body{
 	background-image: url("https://images3.alphacoders.com/197/197649.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
+.error{
+	font-family: 'Cinzel';
+	font-weight: bolder;
+	border-style: 2px red;
+	color: red;
+	width: auto;
+	height: auto;
+}
+
+.errorDiv{
+	text-align: center;
+}
+
+body > .errorDiv{
+	text-align: center;
+}
+
 
 #contain { 
 	width: auto;
