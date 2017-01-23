@@ -1,12 +1,9 @@
 @CHARSET "UTF-8";
 
 body{
-	/*  background: linear-gradient(to top, blue , white, red ) fixed;*/
 	background-image: url("https://images3.alphacoders.com/197/197649.jpg");
-	
     background-repeat: no-repeat;
     background-size: cover;
-
 }
 
 #contain { 
@@ -15,17 +12,16 @@ body{
 	position: fixed;
 	top: 8px;
 	right: 16px;
-	
 }
 
 #presNum{
-	 
 	float: left;
 	color: white;
 	font-size: 45px;
 	font-family: 'Cinzel';
 	padding-right: 0.5em;
 }
+
 #presName{
 	float: left;
 	color: white;
@@ -33,6 +29,7 @@ body{
 	padding-left: 0%;
 	font-family: 'Cinzel';
 }
+
 .clear {clear:both;}
 
 #contain2{
@@ -41,8 +38,7 @@ body{
 	float: left;
 	width: 35%;
 	font-size: 18px;
-	font-family: 'Cinzel';
-	
+	font-family: 'Cinzel';	
 }
 
 .word{
@@ -63,9 +59,6 @@ body{
 	right: 9.5%;
 }
 
-
-
-
 #presPic{
 	padding-top: 10%;
 	padding-right: 3%;
@@ -74,6 +67,7 @@ body{
 .button{
 	background-color: black;
 }
+
 .fa{
 	color: red;
 }

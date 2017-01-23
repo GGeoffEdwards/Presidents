@@ -28,8 +28,6 @@ public class PresidentsServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		// Item item = storeDAO.getInventoryItem(req.getParameter("product"));
 		HttpSession session = req.getSession();
 		presidents = (List<President>) session.getAttribute("presidents");
 		if (presidents == null) {
@@ -43,9 +41,7 @@ public class PresidentsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nextBack = req.getParameter("submit");
 		String goToTerm = req.getParameter("termNumber");
-		//System.out.println(nextBack);
 		String filter = req.getParameter("filter");
-		System.out.println("filter =" + filter);
 
 		if (filter != null) {
 			filter = " " + filter;
@@ -55,14 +51,12 @@ public class PresidentsServlet extends HttpServlet {
 					filterPresidents.add(p);
 				}
 			}
-			System.out.println(filterPresidents.size());
 			req.setAttribute("filterPresident", filterPresidents);
 			req.getRequestDispatcher("/filter.jsp").forward(req, resp);
 		}
 
 		else if (goToTerm != null) {
 			int g = Integer.parseInt(goToTerm);
-			//System.out.println("goToTerm" + g);
 			req.setAttribute("president", presidentDAO.getPresidents().get(g - 1));
 			req.setAttribute("nextNumber", Integer.parseInt(presidentDAO.getPresidents().get(g - 1).getTermNumber()));
 			req.setAttribute("prevNumber",
@@ -74,10 +68,6 @@ public class PresidentsServlet extends HttpServlet {
 			req.setAttribute("nextNumber", Integer.parseInt(presidentDAO.getPresidents().get(0).getTermNumber()));
 		} else {
 			int x = Integer.parseInt(nextBack);
-
-			// System.out.println("test" +
-			// (Integer.parseInt(presidentDAO.getPresidents().get(x).getTermNumber())
-			// -2));
 			req.setAttribute("president", presidentDAO.getPresidents().get(x));
 			req.setAttribute("nextNumber", Integer.parseInt(presidentDAO.getPresidents().get(x).getTermNumber()));
 			req.setAttribute("prevNumber", Integer.parseInt(presidentDAO.getPresidents().get(x).getTermNumber()) - 2);
@@ -85,5 +75,4 @@ public class PresidentsServlet extends HttpServlet {
 		req.getRequestDispatcher("/president.jsp").forward(req, resp);
 
 	}
-
 }

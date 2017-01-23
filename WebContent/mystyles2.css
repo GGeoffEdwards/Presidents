@@ -2,12 +2,9 @@
 
 
 body{
-	/*  background: linear-gradient(to top, blue , white, red ) fixed;*/
 	background-image: url("https://images3.alphacoders.com/197/197649.jpg");
-	
     background-repeat: no-repeat;
     background-size: cover;
-
 }
 
 img {
@@ -22,6 +19,7 @@ ul{
 	list-style: none;
 	display: inline;
 	float: left;
+	color:#999a9b;
 	font-family: 'Cinzel';
 	font-weight: bolder;
 }

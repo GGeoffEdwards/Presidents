@@ -5,6 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="mystyles.css">
 <link href='http://fonts.googleapis.com/css?family=Cinzel'
 	rel='stylesheet' type='text/css'>
@@ -17,8 +18,7 @@
 --%>
 	<div id="contain">
 		<div id="presNum">
-			<c:out value="${president.termNumber}"></c:out>
-			.
+			<c:out value="${president.termNumber}"></c:out>.
 		</div>
 		<div id="presName">
 			<c:out value="${president.name}"></c:out>
@@ -72,8 +72,5 @@
 				</form>
 			</div>
 	</div>
-	<!-- <input type="button" name="submit" value="next">
-<input type="button" name="submit" value="previous"> -->
-
 </body>
 </html>
